@@ -29,11 +29,16 @@ namespace BigSchool_NhutNguyet.Controllers
         }
         [Authorize]
         [HttpPost]
-        public ActionResult Create(CourseViewModel viewModel) //xem sach ma con ghi sai
+        public ActionResult Create(CourseViewModel viewModel) 
         {
+            if (!ModelState.IsValid)
+            {
+                viewModel.Categories = _dbContext.Categories.ToList();
+                return View("Create", viewModel);
+            }    
             var course = new Course
             {
-                LecturerId = User.Identity.GetUserId(), //tao khong nho m khai bao no nam o muc nao nua ch
+                LecturerId = User.Identity.GetUserId(),
                 DateTime = viewModel.GetDateTime(),
                 CategoryId = viewModel.Category,
                 Place = viewModel.Place
