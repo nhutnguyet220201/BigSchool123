@@ -11,10 +11,10 @@ namespace BigSchool_NhutNguyet.Controllers
 {
     public class CoursesController : Controller
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly ApplicationDbcontext _dbContext;
         public CoursesController()
         {
-            _dbContext = new ApplicationDbContext();
+            _dbContext = new ApplicationDbcontext();
         }
 
         // GET: Courses
@@ -29,13 +29,14 @@ namespace BigSchool_NhutNguyet.Controllers
         }
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CourseViewModel viewModel) 
         {
             if (!ModelState.IsValid)
             {
                 viewModel.Categories = _dbContext.Categories.ToList();
                 return View("Create", viewModel);
-            }    
+            }
             var course = new Course
             {
                 LecturerId = User.Identity.GetUserId(),
@@ -45,7 +46,8 @@ namespace BigSchool_NhutNguyet.Controllers
             };
             _dbContext.Courses.Add(course);
             _dbContext.SaveChanges();
-            return RedirectToAction("Index","home");
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

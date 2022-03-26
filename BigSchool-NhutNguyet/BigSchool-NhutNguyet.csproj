@@ -190,8 +190,13 @@
     <Compile Include="Migrations\202203210331473_update-database.Designer.cs">
       <DependentUpon>202203210331473_update-database.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203260949214_AddNameColumnToApplicationUser.cs" />
+    <Compile Include="Migrations\202203260949214_AddNameColumnToApplicationUser.Designer.cs">
+      <DependentUpon>202203260949214_AddNameColumnToApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationDbcontext.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -200,6 +205,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\CourseViewModel.cs" />
     <Compile Include="ViewModel\FutureDate.cs" />
+    <Compile Include="ViewModel\Validation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -287,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203210331473_update-database.resx">
       <DependentUpon>202203210331473_update-database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203260949214_AddNameColumnToApplicationUser.resx">
+      <DependentUpon>202203260949214_AddNameColumnToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

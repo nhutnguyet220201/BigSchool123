@@ -7,17 +7,17 @@ using System.Web;
 
 namespace BigSchool_NhutNguyet.ViewModel
 {
-    public class FutureDate: ValidationAttribute
+    public class ValidTime : ValidationAttribute  // rồi sửa đc cái cần chưa bắt lỗi con khỉ
     {
         public override bool IsValid(object value)
         {
             DateTime dateTime;
             var isValid = DateTime.TryParseExact(Convert.ToString(value),
-            "dd/M/yyyy",
-            CultureInfo.CurrentCulture,
-            DateTimeStyles.None,
-            out dateTime);
-            return (isValid && dateTime > DateTime.Now);
+                "HH:mm",
+                CultureInfo.CurrentCulture,
+                DateTimeStyles.None,
+                out dateTime);
+            return isValid;
         }
     }
 }
