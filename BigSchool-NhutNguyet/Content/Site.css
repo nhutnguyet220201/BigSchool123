@@ -39,11 +39,12 @@
 
         .course > li .date {
             text-align: center;
-            background-color: #b6ff00;
-            color: black;
+            background-color: #d41d50;
+            color: white;
             width: 60px;
             border-radius: 8px;
             margin-top: 10px;
+            border-radius: 8px;
         }
 
         .course > li .details {

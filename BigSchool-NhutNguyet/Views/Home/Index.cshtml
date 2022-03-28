@@ -8,6 +8,9 @@
         @foreach (var course in Model)
         {
             <li>
+                @course.DateTime - @course.Lecturer.Name
+            </li>
+            <li>
                 <div class="date">
                     <div class="month">
                         @course.DateTime.ToString("MM")
