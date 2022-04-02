@@ -7,16 +7,16 @@ using System.Web.Mvc;
 using BigSchool_NhutNguyet.Models;
 using BigSchool_NhutNguyet.ViewModel;
 using Microsoft.AspNet.Identity.EntityFramework;
-
+using BigSchool_NhutNguyet.ViewModels;
 
 namespace BigSchool_NhutNguyet.Controllers
 {
     public class HomeController : Controller
     {
-        private ApplicationDbcontext _dbContext;
+        private ApplicationDbContext _dbContext;
         public HomeController()
         {
-            _dbContext = new ApplicationDbcontext();
+            _dbContext = new ApplicationDbContext();
         }
         public ActionResult Index()
         {
@@ -25,7 +25,13 @@ namespace BigSchool_NhutNguyet.Controllers
                 .Include(c => c.Category)
                 .Where(c => c.DateTime > DateTime.Now);
 
-            return View(upcommingCourses);
+            var viewModel = new CoursesViewModel
+            {
+                UpcommingCourses = upcommingCourses,
+                ShowAction = User.Identity.IsAuthenticated
+            };
+
+            return View(viewModel);
         }
 
             public ActionResult About()
